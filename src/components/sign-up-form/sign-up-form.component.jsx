@@ -50,11 +50,10 @@ const SignUpForm = function () {
         email,
         password
       );
-      // Creating user document after authenticating
-      const userDoc = await createUserDocumentFromAuth(user, { displayName });
-      resetFormFields();
 
-      console.log(userDoc);
+      // Creating user document after authenticating
+      await createUserDocumentFromAuth(user, { displayName });
+      resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use")
         alert("Cannot create user, email already in use");
