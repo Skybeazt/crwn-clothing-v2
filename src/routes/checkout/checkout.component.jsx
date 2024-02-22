@@ -3,30 +3,36 @@ import { CartContext } from "./../../contexts/cart.context.jsx";
 
 import CheckoutItem from "./../../components/checkout-item/checkout-item.component.jsx";
 
-import "./checkout.styles.scss";
+import {
+  CheckoutContainer,
+  CheckoutHeader,
+  HeaderBlock,
+  HeaderBlockLastChild,
+  Total,
+} from "./checkout.styles.jsx";
 
 const Checkout = function () {
   const { cartItems, cartTotalPrice } = useContext(CartContext);
 
   return (
-    <div className="checkout-container">
-      <div className="checkout-header">
-        <div className="header-block">
+    <CheckoutContainer>
+      <CheckoutHeader>
+        <HeaderBlock>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlockLastChild>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlockLastChild>
+      </CheckoutHeader>
       {!cartItems ? (
         <h3>Please add items to chart to be able checkout</h3>
       ) : (
@@ -34,8 +40,8 @@ const Checkout = function () {
           <CheckoutItem key={checkoutItem.id} cartItem={checkoutItem} />
         ))
       )}
-      <span className="total">{`Total: $${cartTotalPrice}`}</span>
-    </div>
+      <Total>{`Total: $${cartTotalPrice}`}</Total>
+    </CheckoutContainer>
   );
 };
 

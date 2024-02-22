@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Category from "./../category/category.component.jsx";
 import CategoriesPreview from "./../categories-preview/categories-preview.component.jsx";
 
-import "./shop.styles.scss";
+// import "./shop.styles.scss";
 
 const Shop = function () {
   return (
