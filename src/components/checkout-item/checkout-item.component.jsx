@@ -20,13 +20,13 @@ const CheckoutItem = function ({ cartItem }) {
   // const addItemHandler = (itemToAdd) => addItemToCart(itemToAdd);
   // const reduceItemHandler = (itemToReduce) => reduceItemFromCart(itemToReduce);
 
-  const { title, quantity, imageUrl, price } = cartItem;
+  const { name, quantity, imageUrl, price } = cartItem;
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <img src={imageUrl} alt={title} />
+        <img src={imageUrl} alt={name} />
       </ImageContainer>
-      <Name>{title}</Name>
+      <Name>{name}</Name>
       <Quantity>
         <Arrow onClick={() => reduceItemFromCart(cartItem)}>&#10094;</Arrow>
         <Value>{quantity}</Value>
