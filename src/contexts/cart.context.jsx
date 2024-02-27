@@ -122,7 +122,7 @@ export const CartProvider = function ({ children }) {
   };
 
   const setIsCartOpen = function (bool) {
-    dispatch(createAction("CART_ACTIONS_TYPES.TOGGLE_IS_CART_OPEN", bool));
+    dispatch(createAction(CART_ACTIONS_TYPES.TOGGLE_IS_CART_OPEN, bool));
   };
 
   const value = {
