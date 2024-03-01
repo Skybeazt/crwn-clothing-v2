@@ -1,4 +1,4 @@
-const createAction = function (type, payload) {
+export const createAction = function (type, payload) {
   return { type, payload };
 };
 
