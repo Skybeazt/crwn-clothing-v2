@@ -41,7 +41,6 @@ export const setIsCartOpen = function (bool) {
 
 export const addItemToCart = function (cartItems, itemToAddToCart) {
   const newCartItems = addCartItem(cartItems, itemToAddToCart);
-
   return createAction(CART_ACTIONS_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
