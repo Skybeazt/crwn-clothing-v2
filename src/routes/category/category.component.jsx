@@ -1,13 +1,19 @@
-import { useContext, useState, useEffect, Fragment } from "react";
-import { CategoriesContext } from "../../contexts/categories.context.jsx";
+import { useState, useEffect, Fragment } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectCategoriesMap,
+  selectCategoriesIsLoading,
+} from "./../../store/categories/categories.selector.js";
 
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/product-card/product-card.component.jsx";
+import Spinner from "./../../components/spinner/spinner.component.jsx";
 import { CategoryContainer, CategoryTitle } from "./category.styles.jsx";
 
 const Category = function () {
   const { category } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoriesMap);
+  const categoriesIsLoading = useSelector(selectCategoriesIsLoading);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
@@ -17,27 +23,18 @@ const Category = function () {
   return (
     <Fragment>
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
-      <CategoryContainer>
-        {products &&
-          products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-      </CategoryContainer>
+      {categoriesIsLoading ? (
+        <Spinner />
+      ) : (
+        <CategoryContainer>
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </CategoryContainer>
+      )}
     </Fragment>
   );
-
-  // return (
-  //   <div className="category-preview-container">
-  //     <h2>
-  //       <span className="title">{title.toUpperCase()}</span>
-  //     </h2>
-  //     <div className="preview">
-  //       {products.map((product) => (
-  //         <ProductCard key={product.id} product={product} />
-  //       ))}
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Category;
